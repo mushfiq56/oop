@@ -1,12 +1,8 @@
-# 🔄 Polymorphism in Object-Oriented Programming
-
-## 🔹 What is Polymorphism?
+# 🔄 Polymorphism
 
 Polymorphism allows the same interface to be used for different data types or classes. **In simple terms:** One function behaves differently based on the object that invokes it.
 
-## 📘✅ General Understanding
-
-**1. What is the core benefit of polymorphism in OOP?**
+**1. The benefit of polymorphism in OOP?**
 
 It allows writing generic, reusable code that can work with different types of objects seamlessly.
 
@@ -26,22 +22,16 @@ Python functions are defined in `dictionaries` by name; redefining a method over
 
 Only the last method is retained; the earlier one is overridden.
 
-### ✅ Duck Typing
+**7.  Explain how duck typing can lead to more flexible code.**
 
-**7. Explain how duck typing can lead to more flexible code.**
-
-Code focuses on behavior, not type—any object that implements required methods will work.
+✅ Code focuses on behavior, not type—any object that implements required methods will work.
 
 <details>
-<summary>🔍Duck Typing with Example</summary>
+<summary>❓ Duck Typing with Example</summary>
 
 The concept of **duck typing** in Python is captured by the phrase:
 
 > **"If it walks like a duck and quacks like a duck, it's a duck."**
-
----
-
-### ✅ Why Your Example Is Duck Typing:
 
 ```python
 class Bird:
@@ -62,13 +52,9 @@ start_flying(Airplane())  # Airplane is flying
 You're **not checking the type** of `obj` (whether it’s a `Bird` or `Airplane`).
 You're only assuming: _"If it has a `fly()` method, it must be flyable."_
 
----
-
 ### 🦆 That’s Duck Typing:
 
 Python doesn’t care **what the object is**, only that it **has the method** being called.
-
----
 
 ### ❌ Not Duck Typing (for contrast):
 
@@ -117,7 +103,7 @@ animal_sound(Cat())  # Meow!
 ✅ No need to implement a formal interface.
 If the object has a `.speak()` method, it works.
 
----
+ 
 
 ### ☕ **Java (Interface-Based Polymorphism)**
 
@@ -153,12 +139,11 @@ public class Main {
 ✅ Must **declare and implement** the `Animal` interface
 ➡️ Enforced at **compile time**
 
----
 
 ### 🔑 To Sum Up
 
 | Feature                  | Python (Duck Typing) | Java (Interface-Based) |
-| ------------------------ | -------------------- | ---------------------- |
+|          |       -- |        - |
 | Type Checking            | Runtime              | Compile-time           |
 | Interface Implementation | Not required         | Required               |
 
@@ -193,8 +178,6 @@ d.speak()
 Dog barks
 Animal speaks
 ```
-
----
 
 ### Explanation:
 
@@ -231,8 +214,6 @@ except TypeError as e:
 Error: Can't instantiate abstract class Dog with abstract method speak
 ```
 
----
-
 ### Explanation:
 
 - `Animal` defines an abstract method `speak()`.
@@ -268,8 +249,6 @@ Even though `make_sound` calls the same method `.speak()`, it runs the version f
 
 </details>
 
----
-
 ### ✅ Operator Overloading
 
 **14. Why should `__str__` or `__repr__` be defined when overloading operators?**
@@ -284,8 +263,6 @@ To provide meaningful string output for objects when printing or debugging.
 - `__eq__` checks equality (`==`)
 - `__cmp__` (Python 2 only) returned -1, 0, 1 for comparisons.
 
----
-
 ### ✅ Multiple Dispatch
 
 **17. What are the limitations of using `@dispatch` in `multipledispatch`?**
@@ -298,11 +275,10 @@ To provide meaningful string output for objects when printing or debugging.
 - Overloading relies on signature differences
 - Multiple dispatch chooses functions based on argument types at runtime.
 
----
-
+ 
 ## 🧩 **Types of Polymorphism**  
 | Type                  | Description                                      | Python Support | Example Use Case            |  
-|-----------------------|--------------------------------------------------|----------------|-----------------------------|  
+|       --|                --|     -|         --|  
 | **Duck Typing**       | Focus on behavior, not type                      | ✅ Native      | `len()` works on lists/strings |  
 | **Operator Overloading** | Customize operators (`+`, `-`, etc.) for objects | ✅ Native      | `a + b` (numbers vs. strings) |  
 | **Method Overriding** | Subclass redefines a parent method               | ✅ Native      | `ChildClass` modifies `ParentClass.method()` |  
@@ -310,11 +286,9 @@ To provide meaningful string output for objects when printing or debugging.
 | **Multiple Dispatch** | Choose function based on argument types         | 🟡 Library     | `@dispatch` from `multipledispatch` |  
 
 
----
-
 ## 🔍 Code Examples
 
-### 1. **Duck Typing**
+### **Duck Typing**
 
 <details>
 <summary>Example</summary>
@@ -337,7 +311,7 @@ start_flying(Airplane())  # Airplane is flying
 
 </details>
 
-### 2. **Operator Overloading**
+###  **Operator Overloading**
 
 <details>
 <summary>Example</summary>
@@ -360,7 +334,7 @@ print(p1 + p2)  # (4, 6)
 ```
 </details>
 
-### 3. **Method Overriding (Runtime Polymorphism)**
+###  **Method Overriding (Runtime Polymorphism)**
 
 <details>
 <summary>Example</summary>
@@ -383,7 +357,7 @@ d.speak()  # Dog barks
 
 </details>
 
-### 4. **Method Overloading (Workaround in Python)**
+### **Method Overloading (Workaround in Python)**
 
 <details>
 <summary>Example</summary>
@@ -403,7 +377,7 @@ g.hello("Alice")  # Hello, Alice!
 
 </details>
 
-### 5. **Multiple Dispatch (`multipledispatch`)**
+###  **Multiple Dispatch (`multipledispatch`)**
 
 <details>
 <summary>Example</summary>
@@ -484,11 +458,7 @@ class Circle(Shape):
         return 3.14 * 5 * 5
 ```
 
-## 👨‍💻 Code-Based Questions & Answers
-
----
-
-### 1. **Dynamic Dispatch Example**
+### **Dynamic Dispatch Example**
 
 **Q:** What is the output?
 
@@ -521,9 +491,9 @@ Child
 
 </details>
 
----
+ 
 
-### 2. **Default Parameter Handling**
+### **Default Parameter Handling**
 
 <details>
 <summary>Show Answer</summary>
@@ -549,9 +519,8 @@ Hello, Bob
 
 </details>
 
----
-
-### 3. **Method Overloading Failure**
+ 
+###  **Method Overloading Failure**
 
 <details>
 <summary>Show Answer</summary>
@@ -577,9 +546,7 @@ TypeError: add() missing 1 required positional argument: 'b'
 
 </details>
 
----
-
-### 4. **Fix Method Overloading with `*args`**
+###  **Fix Method Overloading with `*args`**
 
 <details>
 <summary>Show Answer</summary>
@@ -596,12 +563,9 @@ m = Math()
 print(m.multiply(3))      # 9
 print(m.multiply(2, 4))   # 8
 ```
-
 </details>
 
----
-
-### 5. **Polymorphism in a List of Objects**
+### **Polymorphism in a List of Objects**
 
 <details>
 <summary>Show Answer</summary>
@@ -629,4 +593,4 @@ Meow
 
 </details>
 
----
+ 
