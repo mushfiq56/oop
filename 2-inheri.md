@@ -248,3 +248,195 @@ class SmartPhone:
 ---
 
 Would you like me to create a printable **cheat sheet** or a set of **practice coding exercises** for these concepts next?
+
+Great! Let's go through each of these **advanced inheritance questions** with clear answers and examples so you truly understand how Python handles these situations.
+
+---
+
+### 🧩 **1. How does Python resolve method conflicts in multiple inheritance?**
+
+✅ **Answer:**
+Python uses **Method Resolution Order (MRO)** with the **C3 linearization algorithm**. This means:
+
+* Python looks for methods in the order of the class hierarchy (left-to-right in the inheritance list).
+* You can view the MRO with `ClassName.mro()` or `help(ClassName)`.
+
+🔧 **Example:**
+
+```python
+class A:
+    def show(self): print("A")
+
+class B(A):
+    def show(self): print("B")
+
+class C(A):
+    def show(self): print("C")
+
+class D(B, C):
+    pass
+
+d = D()
+d.show()           # Output: B
+print(D.mro())     # [D, B, C, A, object]
+```
+
+🔎 **Why?**
+`D` inherits from `B` first, so Python checks `B` before `C`.
+
+---
+
+### 🧩 **2. What is the diamond problem and how does Python solve it?**
+
+✅ **Answer:**
+The **diamond problem** happens when multiple inheritance creates a situation where the same base class is inherited multiple times through different paths.
+
+📌 **Diagram:**
+
+```
+      A
+     / \
+    B   C
+     \ /
+      D
+```
+
+🔧 **Example:**
+
+```python
+class A:
+    def show(self): print("A")
+
+class B(A): pass
+class C(A): pass
+class D(B, C): pass
+
+d = D()
+d.show()           # Output: A
+print(D.mro())     # [D, B, C, A, object]
+```
+
+✅ **Python's solution:**
+It uses **C3 linearization** to resolve the hierarchy cleanly. So `A` is only called once even if it appears via both `B` and `C`.
+
+---
+
+### 🧩 **3. Can you dynamically add methods to a subclass?**
+
+✅ **Answer:**
+Yes, Python allows **monkey patching** (adding or modifying attributes/methods at runtime).
+
+🔧 **Example:**
+
+```python
+class MyClass:
+    pass
+
+def greet(self):
+    print("Hello!")
+
+# Dynamically add method
+MyClass.greet = greet
+
+obj = MyClass()
+obj.greet()        # Output: Hello!
+```
+
+You can even use `types.MethodType` to bind methods correctly with `self`.
+
+---
+
+### 🧩 **4. What happens if you don't call `super().__init__()` in a child class?**
+
+✅ **Answer:**
+The parent class's `__init__()` will **not be called automatically**, which may lead to:
+
+* Uninitialized attributes
+* Skipped setup logic
+* Bugs due to missing state
+
+🔧 **Example:**
+
+```python
+class Parent:
+    def __init__(self):
+        print("Parent init")
+        self.value = 42
+
+class Child(Parent):
+    def __init__(self):
+        print("Child init")
+
+c = Child()
+print(hasattr(c, 'value'))  # Output: False
+```
+
+✅ **Fix:**
+
+```python
+super().__init__()  # Must be called manually
+```
+
+---
+
+### 🧩 **5. How would you implement an interface-like structure in Python?**
+
+✅ **Answer:**
+Python doesn't have interfaces like Java or C#, but you can mimic them in two ways:
+
+---
+
+#### ✅ Option 1: **Abstract Base Classes (ABCs)**
+
+```python
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        print("Woof!")
+
+d = Dog()
+d.speak()  # Output: Woof!
+```
+
+🛑 Trying to instantiate `Animal` or a subclass without implementing `speak()` will raise an error.
+
+---
+
+#### ✅ Option 2: **Duck Typing**
+
+If it *looks like* a duck and *quacks like* a duck, Python allows it.
+
+```python
+class Duck:
+    def quack(self):
+        print("Quack!")
+
+def make_it_quack(animal):
+    animal.quack()
+
+duck = Duck()
+make_it_quack(duck)  # No interface, but works
+```
+
+---
+
+## ✅ Summary Table
+
+| Question          | Key Point                                         |
+| ----------------- | ------------------------------------------------- |
+| MRO & Conflicts   | Python uses left-to-right resolution via `C3 MRO` |
+| Diamond Problem   | Solved by MRO to avoid duplicate parent calls     |
+| Dynamic Method    | Yes, use `monkey patching`                        |
+| Missing `super()` | Skips parent setup, causes bugs                   |
+| Interfaces        | Use `abc.ABC` or duck typing                      |
+
+---
+
+Would you like code challenges or real-world problems that test these inheritance concepts?
+
