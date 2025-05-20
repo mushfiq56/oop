@@ -155,7 +155,7 @@ public class Main {
 
 ---
 
-### 🔑 Summary
+### 🔑 To Sum Up
 
 | Feature                  | Python (Duck Typing) | Java (Interface-Based) |
 | ------------------------ | -------------------- | ---------------------- |
@@ -300,15 +300,15 @@ To provide meaningful string output for objects when printing or debugging.
 
 ---
 
-## 🧠 Types of Polymorphism in Python
+## 🧩 **Types of Polymorphism**  
+| Type                  | Description                                      | Python Support | Example Use Case            |  
+|-----------------------|--------------------------------------------------|----------------|-----------------------------|  
+| **Duck Typing**       | Focus on behavior, not type                      | ✅ Native      | `len()` works on lists/strings |  
+| **Operator Overloading** | Customize operators (`+`, `-`, etc.) for objects | ✅ Native      | `a + b` (numbers vs. strings) |  
+| **Method Overriding** | Subclass redefines a parent method               | ✅ Native      | `ChildClass` modifies `ParentClass.method()` |  
+| **Method Overloading** | Same method name, different parameters          | ❌ Not native  | Simulated via `*args`/`**kwargs` |  
+| **Multiple Dispatch** | Choose function based on argument types         | 🟡 Library     | `@dispatch` from `multipledispatch` |  
 
-| Type                     | Description                                                   |
-| ------------------------ | ------------------------------------------------------------- |
-| **Duck Typing**          | Type is less important than behavior (focus on interface)     |
-| **Operator Overloading** | Same operator works differently across classes                |
-| **Method Overriding**    | Subclass provides a new implementation of a method            |
-| **Method Overloading**   | Same method name, different parameters (Not native in Python) |
-| **Multiple Dispatch**    | Achieved via libraries (e.g., `multipledispatch`)             |
 
 ---
 
@@ -337,8 +337,6 @@ start_flying(Airplane())  # Airplane is flying
 
 </details>
 
----
-
 ### 2. **Operator Overloading**
 
 <details>
@@ -360,10 +358,7 @@ p1 = Point(1, 2)
 p2 = Point(3, 4)
 print(p1 + p2)  # (4, 6)
 ```
-
 </details>
-
----
 
 ### 3. **Method Overriding (Runtime Polymorphism)**
 
@@ -388,8 +383,6 @@ d.speak()  # Dog barks
 
 </details>
 
----
-
 ### 4. **Method Overloading (Workaround in Python)**
 
 <details>
@@ -409,8 +402,6 @@ g.hello("Alice")  # Hello, Alice!
 ```
 
 </details>
-
----
 
 ### 5. **Multiple Dispatch (`multipledispatch`)**
 
@@ -436,8 +427,6 @@ add("hello", "AI")      # String join: hello AI
 
 </details>
 
----
-
 ### ❌ Invalid Use of `@dispatch` in Classes
 
 <details>
@@ -462,8 +451,6 @@ class Add:
 
 </details>
 
----
-
 ## 🔧 Dynamic Polymorphism Workarounds in Python
 
 - **Default Arguments**
@@ -479,8 +466,6 @@ def greet(name="Guest"):
 def add(*args):
     return sum(args)
 ```
-
----
 
 ## 📐 Abstract Base Classes (ABCs)
 
