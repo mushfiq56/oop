@@ -4,7 +4,6 @@ An **interface** is a contract or blueprint that defines a **set of abstract met
 It focuses on **what** needs to be done — **not how**.
 > Think of it like a **to-do list** for classes.
 
-
 ## 🔑 Key Characteristics: Java vs Python (ABC)
 
 | Feature                  | Java                                                   | Python (Using `ABC`)                           |
@@ -45,8 +44,6 @@ class Car(Vehicle):
 ```
 
 ### Can an interface have method implementations?
-
-✅ **Yes.**
 
 * **Java:** Since Java 8, interfaces can have `default` and `static` methods with implementations.
 * **Python:** Abstract Base Classes (ABCs) can include concrete methods.
